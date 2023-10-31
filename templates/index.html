@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block index %}
+<div class="container">
+        <div id="taskForm" style="display: none;">
+            <h3>Форма добавления задачи или учета времени:</h3>
+            <form action="" method="POST" style="width: 50%;">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="taskTitle">Заголовок:</label>
+                        {{form.title}}
+                    <input type="text" class="form-control" id="taskTitle">
+                </div>
+                <div class="form-group">
+                    <label for="taskDescription">Описание:</label>
+                        {{form.description}}
+                    <textarea class="form-control" id="taskDescription"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="taskDeadline">Срок выполнения:</label>
+                        {{form.deadline}}
+                    <input type="date" class="form-control" id="taskDeadline">
+                </div>
+                <button type="submit" class="btn btn-primary">Сохранить задачу</button>
+            </form>
+        </div>
+        <button id="addTaskButton" class="btn btn-primary">Добавить задачу или учет времени</button>
+    </div>
+
+    <script>
+        const addTaskButton = document.getElementById("addTaskButton");
+        const taskForm = document.getElementById("taskForm");
+
+        addTaskButton.addEventListener("click", () => {
+            if (addTaskButton.innerText === "Добавить задачу или учет времени") {
+                addTaskButton.innerText = "Отмена";
+                taskForm.style.display = "block";
+            } else {
+                addTaskButton.innerText = "Добавить задачу или учет времени";
+                taskForm.style.display = "none";
+            }
+        });
+    </script>
+{% endblock %}
+
