@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block login %}
+<div class="container">
+
+<form method="POST">
+    {% csrf_token %}
+    <label for="username">Имя пользователя:</label>
+    <input type="text" id="username" name="username" required><br>
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password" required><br>
+    <button type="submit">Войти</button>
+</form>
+</div>
+
+{% endblock %}

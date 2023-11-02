@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block registration %}
+
+
+<form method="post" action="/register/">
+    {% csrf_token %}
+    <label for="username">Имя пользователя:</label>
+    <input type="text" id="username" name="username" required><br>
+
+    <label for="email">Адрес электронной почты:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="password1">Пароль:</label>
+    <input type="password" id="password1" name="password1" required><br>
+
+    <label for="password2">Подтвердите пароль:</label>
+    <input type="password" id="password2" name="password2" required><br>
+
+    <button type="submit">Зарегистрироваться</button>
+</form>
+{% endblock %}
